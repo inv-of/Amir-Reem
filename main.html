@@ -210,17 +210,23 @@
     /* ================= LOCATION ================= */
 
     .location{
+      background-image: url("location.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+      
       text-align:center;
-      background:#E8F5BD;
-      text-decoration: #546B41;
+      
+      position:relative;
+      overflow:hidden;
+      text-decoration: #7A5C45;
     }
 
-    .h2{
-        color: #546B41;
-    }
+  
 
     .location-text{
-      color: #99AD7A;
+      color: #7A5C45;
       font-size:26px;
       line-height:2;
       margin-bottom:40px;
@@ -249,30 +255,25 @@
 
     /* ================= MESSAGE ================= */
 
-    .message{
-      background:#DCCCAC;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
+    .photo-section{
+    width:100%;
+    height:100vh; /* ارتفاع الشاشة كاملة */
+    
+    background:url("message.png") center center/cover no-repeat;
 
-    .message-content{
-      max-width:850px;
-      margin:auto;
-      font-size:30px;
-      line-height:2;
-      color:#FFF8EC;
-      animation:fadeUp 2s ease;
-    }
+    opacity:0;
+    transform:translateY(80px);
 
-    .signature{
-      margin-top:45px;
-      font-family:'Great Vibes', cursive;
-      font-size:60px;
-      color:#546B41;
-      animation:glow 3s infinite alternate;
-    }
+    transition:all 1.2s ease;
+    color: #fff;
+}
 
+.photo-section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+    
     /* ================= ANIMATIONS ================= */
 
     @keyframes fadeUp{
@@ -343,18 +344,6 @@
         padding:40px 25px;
       }
 
-      .box{
-        width:140px;
-        padding:25px 15px;
-      }
-
-      .box h3{
-        font-size:42px;
-      }
-
-      .box span{
-        font-size:15px;
-      }
 
       .location-text{
         font-size:20px;
@@ -362,15 +351,6 @@
 
       iframe{
         height:300px;
-      }
-
-      .message-content{
-        font-size:22px;
-        line-height:1.8;
-      }
-
-      .signature{
-        font-size:45px;
       }
 
     }
@@ -397,55 +377,26 @@
 
   <section class="hero-section"></section>
 
-  <!-- ================= COUNTDOWN ================= -->
 
-  <section class="countdown hidden">
-
-<br><br><br><br><br><br><br><br><br>
-<div class="countdown-container">
-
-  <div class="time-unit">
-    <span id="days" class="number">00</span>
-    <span class="label">يوم</span>
-  </div>
-
-  <div class="time-unit">
-    <span id="hours" class="number">00</span>
-    <span class="label">ساعة</span>
-  </div>
-
-  <div class="time-unit">
-    <span id="minutes" class="number">00</span>
-    <span class="label">دقيقة</span>
-  </div>
-
-  <div class="time-unit">
-    <span id="seconds" class="number">00</span>
-    <span class="label">ثانية</span>
-  </div>
-
-</div>
-    
-  </section>
 
   <!-- ================= LOCATION ================= -->
 
   <section class="location hidden">
-
-    <h2 class="h2">Wedding Venue</h2>
+<br><br><br><br><br><br><br><br><br><br>
 
     <div class="location-text">
-      Four Seasons Hotel Cairo At Nile Plaza <br>
-      Cairo, Egypt
+      Hilton hotel green plaza <br>
     </div>
 
     <div class="map">
-
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.857333714605!2d31.20885387552262!3d30.042154974929378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458478bfcf824a7%3A0x7f9c4f50f1d233d4!2sFour%20Seasons%20Hotel%20Cairo%20at%20Nile%20Plaza!5e0!3m2!1sen!2seg!4v1715700000000!5m2!1sen!2seg"
-        loading="lazy"
-        allowfullscreen="">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.5131634120853!2d29.9655222!3d31.2065093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c4b1d6566141%3A0xdf501bb33b6e7711!2sHilton%20Alexandria%20Green%20Plaza!5e0!3m2!1sen!2seg!4v1781540088323!5m2!1sen!2seg" 
+      width="300" 
+      height="225" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 
     </div>
 
@@ -453,40 +404,8 @@
 
   <!-- ================= MESSAGE ================= -->
 
-  <section class="message hidden">
-    <div class="floating-icons message-icons">
 
-  <span style="left:10%; animation-duration:14s;">❀</span>
-  <span style="left:25%; animation-duration:20s;">❤</span>
-  <span style="left:40%; animation-duration:16s;">❀</span>
-  <span style="left:60%; animation-duration:18s;">❤</span>
-  <span style="left:78%; animation-duration:13s;">❀</span>
-  <span style="left:90%; animation-duration:19s;">❤</span>
-
-</div>
-
-    <h2 class="h2">Invitation</h2>
-
-    <div class="message-content">
-
-      With hearts full of love and joy, <br>
-      we invite you to celebrate our special day.
-      <br><br>
-
-      Your presence will make this beautiful occasion
-      even more meaningful and unforgettable.
-      <br><br>
-
-      Join us for an elegant evening filled with love,
-      laughter, happiness, and forever memories.
-
-      <div class="signature">
-        Mohamed & Mariam
-      </div>
-
-    </div>
-
-  </section>
+  <section class="photo-section hidden"></section>
 
   <!-- ================= COUNTDOWN SCRIPT ================= -->
 
@@ -540,6 +459,7 @@
   });
 
 </script>
+
 
 </body>
 </html>
