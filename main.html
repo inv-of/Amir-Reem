@@ -21,38 +21,12 @@
     body{
       background:#fcfcfc;
       color:#DCCCAC;
-      overflow-x:hidden;
       font-family:'Cinzel', serif;
       position:relative;
     }
-html, body {
-  height: auto;
-  overflow-y: auto;
-}
-
-.floating-icons{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
-}
-
-.floating-icons span{
-  position:absolute;
-  bottom:-50px;
-  font-size:28px;
-  opacity:0.18;
-  animation:floatIcons linear infinite;
-}
 
 
-.countdown-icons span{
-  color:#FFF8EC;
-}
+
 
 
 .message-icons span{
@@ -86,6 +60,7 @@ html, body {
       width:100%;
       padding:100px 20px;
       position:relative;
+      min-height:100dvh;
       z-index:2;
     }
 
@@ -224,7 +199,6 @@ html, body {
       max-width:950px;
       margin:auto;
       border-radius:25px;
-      overflow:hidden;
       border:1px solid rgba(255,255,255,0.15);
       box-shadow:0 0 30px rgba(0,0,0,0.6);
       transition:0.5s;
@@ -342,21 +316,14 @@ html, body {
     }
 
 
-.hidden{
-  opacity:0;
-  transform:translateY(80px);
-  transition:all 0.5s ease;
-}
 
-.show{
-  opacity:1;
-  transform:translateY(0);
-}
 
   </style>
 </head>
 <body>
-
+<button onclick="document.scrollingElement.scrollTop += 500">
+TEST
+</button>
 <audio id="bgMusic" autoplay loop playsinline>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
@@ -414,76 +381,29 @@ document.addEventListener("touchstart", tryPlay, { once: true });
 </section>
 
 
-  <script>
-
-    const weddingDate = new Date("September 1, 2026 18:00:00").getTime();
-
-    const countdown = setInterval(function(){
-
-      const now = new Date().getTime();
-
-      const distance = weddingDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
-
-      if(distance < 0){
-        clearInterval(countdown);
-      }
-
-    }, 1000);
-
-  </script>
-  <script>
-
-  const sections = document.querySelectorAll('.hidden');
-
-  const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach((entry) => {
-
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-
-    });
-
-  }, {
-    threshold:0.2
-  });
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-
-</script>
-
+  
+  
 <script>
 window.addEventListener("load", () => {
 
-  setTimeout(() => {
+    setTimeout(() => {
 
-    const auto = setInterval(() => {
+        const autoScroll = setInterval(() => {
 
-      document.documentElement.scrollTop += 1;
+            const el = document.scrollingElement;
 
-      if (
-        document.documentElement.scrollTop + window.innerHeight >=
-        document.documentElement.scrollHeight - 2
-      ) {
-        clearInterval(auto);
-      }
+            el.scrollTop += 1;
 
-    }, 20);
+            if (
+                el.scrollTop + window.innerHeight >=
+                el.scrollHeight - 2
+            ) {
+                clearInterval(autoScroll);
+            }
 
-  }, 2000);
+        }, 20);
+
+    }, 5000);
 
 });
 </script>
