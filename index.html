@@ -89,22 +89,18 @@ body{
 const gate = document.getElementById("gate");
 const frame = document.getElementById("mainFrame");
 
-function openGate(){
+gate.addEventListener("click", () => {
     gate.classList.add("open");
 
     setTimeout(() => {
         gate.classList.add("fade-out");
         gate.style.pointerEvents = "none";
 
+  
         frame.contentWindow.postMessage("playMusic", "*");
+
     }, 2000);
-}
-
-gate.addEventListener("click", openGate);
-
-setTimeout(() => {
-    openGate();
-}, 5000);
+});
 </script>
 
 </body>
