@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Amir&Reem Wedding Invitation</title>
+  <title>Amird&Reem Wedding Invetation</title>
 
-  <!-- Elegant Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
@@ -27,7 +26,6 @@
       position:relative;
     }
 
-    /* ================= FLOATING ICONS ================= */
 
 .floating-icons{
   position:absolute;
@@ -48,19 +46,16 @@
   animation:floatIcons linear infinite;
 }
 
-/* Countdown Colors */
 
 .countdown-icons span{
   color:#FFF8EC;
 }
 
-/* Message Colors */
 
 .message-icons span{
   color:#546B41;
 }
 
-/* Animation */
 
 @keyframes floatIcons{
 
@@ -83,7 +78,6 @@
   }
 
 }
-    /* ================= GENERAL ================= */
 
     section{
       width:100%;
@@ -101,13 +95,12 @@
       letter-spacing:2px;
     }
 
-    /* ================= HERO ================= */
 
     .hero-section{
     width:100%;
     height:100vh;
 
-    background-image:url("hero.jpg"); /* اسم الصورة */
+    background-image:url("hero.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -156,7 +149,6 @@
       color:#DCCCAC;
     }
 
-    /* ================= COUNTDOWN ================= */
 
     .countdown{
        background-image: url("count.png");
@@ -207,7 +199,6 @@
     color:#7A5C45;
     margin-top:8px;
 }
-    /* ================= LOCATION ================= */
 
     .location{
     background-image:url("location.png");
@@ -247,15 +238,13 @@
   border:0;
     }
 
-    /* ================= MESSAGE ================= */
 
     .photo-section{
     width:100%;
     margin:0;
     padding:0;
-    opacity:0;
-    transform:translateY(80px);
-    transition:all 1.2s ease;
+    opacity:1;
+    transform:none;
 }
 
 .photo-section img{
@@ -270,7 +259,6 @@
 }
 
     
-    /* ================= ANIMATIONS ================= */
 
     @keyframes fadeUp{
       from{
@@ -311,7 +299,6 @@
       }
     }
 
-    /* ================= MOBILE ================= */
 
     @media(max-width:768px){
 
@@ -351,12 +338,11 @@
 
     }
 
-    /* ================= SCROLL ANIMATION ================= */
 
 .hidden{
   opacity:0;
   transform:translateY(80px);
-  transition:all 1.2s ease;
+  transition:all 0.5s ease;
 }
 
 .show{
@@ -368,16 +354,35 @@
 </head>
 <body>
 
+<audio id="bgMusic" autoplay loop playsinline>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+function tryPlay() {
+  music.play().catch(() => {});
+}
+
+window.addEventListener("load", () => {
+  tryPlay();
+});
+
+document.addEventListener("scroll", tryPlay, { once: true });
+document.addEventListener("mousemove", tryPlay, { once: true });
+document.addEventListener("touchstart", tryPlay, { once: true });
+</script>
+
+
   
-  <!-- ================= HERO SECTION ================= -->
 
   <section class="hero-section"></section>
 
 
 
-  <!-- ================= LOCATION ================= -->
 
-  <section class="location hidden">
+  <section class="location">
 <br><br><br><br>
 
 
@@ -399,14 +404,12 @@
 
   </section>
 
-  <!-- ================= MESSAGE ================= -->
 
 
-  <section class="photo-section hidden">
+  <section class="photo-section">
     <img src="message.png" alt="">
 </section>
 
-  <!-- ================= COUNTDOWN SCRIPT ================= -->
 
   <script>
 
@@ -459,6 +462,26 @@
 
 </script>
 
+<script>
+setTimeout(() => {
 
+  let autoScroll = setInterval(() => {
+
+    window.scrollBy({
+      top: 2,
+      behavior: "auto"
+    });
+
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.scrollHeight
+    ) {
+      clearInterval(autoScroll);
+    }
+
+  }, 15);
+
+}, 5000);
+</script>
 </body>
 </html>
