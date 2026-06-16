@@ -467,14 +467,11 @@ setTimeout(() => {
 
   let autoScroll = setInterval(() => {
 
-    window.scrollBy({
-      top: 2,
-      behavior: "auto"
-    });
+    document.documentElement.scrollTop += 2;
 
     if (
-      window.innerHeight + window.scrollY >=
-      document.body.scrollHeight
+      document.documentElement.scrollTop + window.innerHeight >=
+      document.documentElement.scrollHeight
     ) {
       clearInterval(autoScroll);
     }
