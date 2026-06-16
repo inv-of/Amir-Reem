@@ -25,7 +25,10 @@
       font-family:'Cinzel', serif;
       position:relative;
     }
-
+html, body {
+  height: auto;
+  overflow-y: auto;
+}
 
 .floating-icons{
   position:absolute;
@@ -462,42 +465,27 @@ document.addEventListener("touchstart", tryPlay, { once: true });
 
 </script>
 
-<!-- ================= AUTO SCROLL ================= -->
-
 <script>
-
 window.addEventListener("load", () => {
 
   setTimeout(() => {
 
-    startAutoScroll();
+    const auto = setInterval(() => {
+
+      document.documentElement.scrollTop += 1;
+
+      if (
+        document.documentElement.scrollTop + window.innerHeight >=
+        document.documentElement.scrollHeight - 2
+      ) {
+        clearInterval(auto);
+      }
+
+    }, 20);
 
   }, 2000);
 
 });
-
-function startAutoScroll(){
-
-  const auto = setInterval(() => {
-
-    window.scrollBy(0, 1);
-
-    if(
-
-      window.innerHeight + window.pageYOffset >=
-      document.documentElement.scrollHeight - 2
-
-    ){
-
-      clearInterval(auto);
-
-    }
-
-  }, 18);
-
-}
-
 </script>
-
 </body>
 </html>
