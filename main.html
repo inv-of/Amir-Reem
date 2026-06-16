@@ -462,40 +462,42 @@ document.addEventListener("touchstart", tryPlay, { once: true });
 
 </script>
 
+<!-- ================= AUTO SCROLL ================= -->
+
 <script>
-let autoScroll = null;
-let isAutoScrolling = false;
 
-// يبدأ السكروول
-function startAutoScroll() {
-  if (isAutoScrolling) return;
+window.addEventListener("load", () => {
 
-  isAutoScrolling = true;
+  setTimeout(() => {
 
-  autoScroll = setInterval(() => {
-    document.documentElement.scrollTop += 2;
+    startAutoScroll();
 
-    if (
-      document.documentElement.scrollTop + window.innerHeight >=
-      document.documentElement.scrollHeight
-    ) {
-      clearInterval(autoScroll);
-      isAutoScrolling = false;
+  }, 2000);
+
+});
+
+function startAutoScroll(){
+
+  const auto = setInterval(() => {
+
+    window.scrollBy(0, 1);
+
+    if(
+
+      window.innerHeight + window.pageYOffset >=
+      document.documentElement.scrollHeight - 2
+
+    ){
+
+      clearInterval(auto);
+
     }
-  }, 15);
+
+  }, 18);
+
 }
 
-// أول كليك في الصفحة يبدأ السكروول
-document.addEventListener("click", startAutoScroll, { once: true });
-
-// لو المستخدم عمل أي سكروول بإيده يوقف الفور
-window.addEventListener("wheel", stopAutoScroll, { passive: true });
-window.addEventListener("touchmove", stopAutoScroll, { passive: true });
-
-function stopAutoScroll() {
-  clearInterval(autoScroll);
-  isAutoScrolling = false;
-}
 </script>
+
 </body>
 </html>
