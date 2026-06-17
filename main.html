@@ -345,16 +345,17 @@ document.addEventListener("touchstart", tryPlay, { once: true });
 
   
 
-  <section class="hero-section"></section>
+  <section class="hero-section sec"></section>
 
 
 
 
   <section class="location">
-<br><br><br><br>
+<br><br><br><br><br><br><br>
 
 
-    <div class="location-text">
+
+    <div class="location-text sec">
       Hilton hotel green plaza <br>
     </div>
 
@@ -374,34 +375,29 @@ document.addEventListener("touchstart", tryPlay, { once: true });
 
 
 
-  <section class="photo-section">
+  <section class="photo-section sec">
     <img src="message.png" alt="">
 </section>
 
 
-  
-  
 <script>
-window.addEventListener("load", () => {
+const sections = document.querySelectorAll(".sec");
+let currentIndex = 0;
 
-    setTimeout(() => {
+document.addEventListener("click", () => {
+    currentIndex++;
 
-        function smoothScroll() {
+    if (currentIndex >= sections.length) {
+        currentIndex = sections.length - 1; // يقف عند آخر سكشن
+        return;
+    }
 
-            const el = document.scrollingElement;
-
-            el.scrollTop += 2;
-
-            if (el.scrollTop + window.innerHeight < el.scrollHeight) {
-                requestAnimationFrame(smoothScroll);
-            }
-        }
-
-        smoothScroll();
-
-    }, 5000);
-
+    sections[currentIndex].scrollIntoView({
+        behavior: "smooth"
+    });
 });
 </script>
+  
+
 </body>
 </html>
