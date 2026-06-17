@@ -57,12 +57,13 @@
 }
 
     section{
-      width:100%;
-      padding:100px 20px;
-      position:relative;
-      min-height:100dvh;
-      z-index:2;
-    }
+  width:100%;
+  padding:40px 20px;   
+  position:relative;
+  height:auto;        
+  min-height:auto;    
+  z-index:2;
+}
 
     h2{
       text-align:center;
@@ -75,13 +76,14 @@
 
 
     .hero-section{
-    width:100%;
-    height:100vh;
-
-    background-image:url("hero.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+  width:100%;
+  min-height:100vh;  
+  height:auto;
+  background-image:url("hero.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  padding:80px 20px;
 }
 
     .hero::before{
@@ -197,7 +199,7 @@
 
     .map{
       max-width:950px;
-      margin:auto;
+  margin:20px auto 0;
       border-radius:25px;
       border:1px solid rgba(255,255,255,0.15);
       box-shadow:0 0 30px rgba(0,0,0,0.6);
@@ -225,9 +227,8 @@
 }
 
 .photo-section img{
-    display:block;
-    width:100%;
-    height:auto;
+  display:block;
+  width:100%;
 }
 
 .photo-section.show{
@@ -315,8 +316,13 @@
 
     }
 
-
-
+    h1, h2, p{
+  margin:0;
+}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:20px;
+}
 
   </style>
 </head>
@@ -385,16 +391,19 @@ const sections = document.querySelectorAll(".sec");
 let currentIndex = 0;
 
 document.addEventListener("click", () => {
+
     currentIndex++;
 
     if (currentIndex >= sections.length) {
-        currentIndex = sections.length - 1; // يقف عند آخر سكشن
+        currentIndex = sections.length - 1;
         return;
     }
 
     sections[currentIndex].scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "start"
     });
+
 });
 </script>
   
